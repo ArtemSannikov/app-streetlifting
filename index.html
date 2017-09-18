@@ -28,7 +28,9 @@
 		<center><img src="images/logo_isf.png" width="180"></center>
 		<div data-role="controlgroup" data-type="vertical">
 
-		 	<a href="#calculate-coefficient" data-role="button" data-icon="gear" data-transition="none" data-iconpos="left" data-transition="none">Рассчитать коэффициент</a>
+		 	<a href="#calculate-streetlifting" data-role="button" data-icon="gear" data-transition="none" data-iconpos="left" data-transition="none">Коэффициент стритлифтинга</a>
+
+		 	<a href="#calculate-athleticism" data-role="button" data-icon="gear" data-transition="none" data-iconpos="left" data-transition="none">Коэффициент атлетизма</a>
 
 			<a href="#calendar" data-role="button" data-icon="calendar" data-transition="none" data-iconpos="left" data-transition="none">Календарь событий</a>
 
@@ -45,11 +47,11 @@
 
 </div>
 
-<!-- ################### Коэффициент ################### -->
-<div data-role="page" id="calculate-coefficient" data-theme="a">
+<!-- ################### Коэффициент стритлифтинга ################### -->
+<div data-role="page" id="calculate-streetlifting" data-theme="a">
 
 	<div data-role="header" data-add-back-btn="true" data-back-btn-text="Назад" data-back-btn-theme="a">
-		<h1>Коэффициент</h1>
+		<h1>Коэффициент стритлифтинга</h1>
 	</div>
 
 	<div data-role="main" class="ui-content">
@@ -58,9 +60,9 @@
 
 			<p style="width:100%;text-align:center;font-weight:bold;color:green;"><span id="number"></span></p>
 
-			<input type="text" name="param1" id="param1" placeholder="Ватл">
-			<input type="text" name="param2" id="param2" placeholder="Вот1">
-			<input type="text" name="param3" id="param3" placeholder="Вот2">
+			<input type="text" name="param1" id="param1" placeholder="Вес атлета">
+			<input type="text" name="param2" id="param2" placeholder="Вес отягощения в первом упражнении">
+			<input type="text" name="param3" id="param3" placeholder="Вес отягощения во втором упражнении">
 			<input type="button" value="Рассчитать коэффициент" onclick="displayResult()">
 			<!--<input type="reset" value="Сбросить">-->
 		</form>
@@ -81,10 +83,58 @@
 	            
 		</script>
 
-		<h3>Краткая информация</h3>
+		<!--<h3>Краткая информация</h3>
+		<p>Ксл = (Ватл + Вот1 + Вот2) / Ватл,</p>
+		<p>Где Ксл – коэффициент атлетизма стритлифтинга,</p>
 		<p>Ватл — собственный вес атлета,</p>
 		<p>Вот1 – вес свободного отягощения в первом упражнении,</p>
-		<p>Вот2 – вес свободного отягощения во втором упражнении.</p>
+		<p>Вот2 – вес свободного отягощения во втором упражнении.</p>-->
+
+	</div>
+
+</div>
+
+<!-- ################### Коэффициент атлетизма ################### -->
+<div data-role="page" id="calculate-athleticism" data-theme="a">
+
+	<div data-role="header" data-add-back-btn="true" data-back-btn-text="Назад" data-back-btn-theme="a">
+		<h1>Коэффициент атлетизма</h1>
+	</div>
+
+	<div data-role="main" class="ui-content">
+
+		<form action="" data-ajax="false">
+
+			<p style="width:100%;text-align:center;font-weight:bold;color:green;"><span id="result_athleticism"></span></p>
+
+			<input type="text" name="param_athleticism_1" id="param_athleticism_1" placeholder="Вес гири">
+			<input type="text" name="param_athleticism_2" id="param_athleticism_2" placeholder="Количество повторений">
+			<input type="text" name="param_athleticism_3" id="param_athleticism_3" placeholder="Собственный вес">
+			<input type="button" value="Рассчитать коэффициент" onclick="displayResult()">
+			<!--<input type="reset" value="Сбросить">-->
+		</form>
+
+		<script type="text/javascript">
+	            
+			function displayResult() {
+				var param_athleticism_1 = document.getElementById('param_athleticism_1').value;
+				var param_athleticism_2 = document.getElementById('param_athleticism_2').value;
+				var param_athleticism_3 = document.getElementById('param_athleticism_3').value;
+				document.getElementById('result_athleticism').innerHTML = calculateCoefficient(param_athleticism_1, param_athleticism_2, param_athleticism_3);
+			}
+
+			function calculateCoefficient(param_athleticism_1, param_athleticism_2, param_athleticism_3) {
+				$result = (+param_athleticism_1 * +param_athleticism_2) / +param_athleticism_3;
+				return $result.toFixed(2);
+			}
+	            
+		</script>
+
+		<!--<h3>Краткая информация</h3>
+		<p>Формура расчёта коэффициента атлетизма: К = ВГ * КП / СВ,</p>
+		<p>ВГ - вес гири,</p>
+		<p>КП - количество повторений,</p>
+		<p>СВ - собственный вес.</p>-->
 
 	</div>
 
@@ -498,17 +548,17 @@
 
 	<div data-role="main" class="ui-content">
 		<h3>Нормативы по классическому стритлифтингу (двоеборье)</h3>
-		<table>
+		<center><table>
 			<tr>
 				<td colspan="6" style="text-align:center;background:#fff;"><strong>Мужчины</strong></td>
 			</tr>
 			<tr>
 				<td rowspan="2" style="background:#9de1f4;color:#000;text-align:center;vertical-align:middle;">Категории (кг.)</td>
-				<td style="background:#fff;color:#333;text-align:center;vertical-align:middle;">3 разряд</td>
-				<td style="background:#fff;color:#333;text-align:center;vertical-align:middle;">2 разряд</td>
-				<td style="background:#fff;color:#333;text-align:center;vertical-align:middle;">1 разряд</td>
-				<td style="background:#fff;color:#333;text-align:center;vertical-align:middle;">КМС</td>
-				<td style="background:#fff;color:#333;text-align:center;vertical-align:middle;">МС</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">3 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">2 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">1 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">КМС</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">МС</td>
 			</tr>
 			<tr>
 				<td colspan="5"  style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;"	>Сумма двоеборья (кг.)</td>
@@ -569,7 +619,375 @@
 				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">177,5</td>
 				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">190</td>
 			</tr>
-		</table>
+		</table></center>
+		<br/>
+		<center><table>
+			<tr>
+				<td colspan="6" style="text-align:center;background:#fff;"><strong>Женщины</strong></td>
+			</tr>
+			<tr>
+				<td rowspan="2" style="background:#9de1f4;color:#000;text-align:center;vertical-align:middle;">Категории (кг.)</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">3 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">2 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">1 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">КМС</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">МС</td>
+			</tr>
+			<tr>
+				<td colspan="5"  style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;"	>Сумма двоеборья (кг.)</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">45</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">22,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">27,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">32,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">37,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">45</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">55</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">30</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">35</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">40</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">45</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">52,5</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">65</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">35</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">40</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">45</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">50</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">57,5</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">65+</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">40</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">45</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">50</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">57,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">62,5</td>
+			</tr>
+		</table></center>
+		<h3>Нормативы по классическому подтягиванию</h3>
+		<center><table>
+			<tr>
+				<td colspan="6" style="text-align:center;background:#fff;"><strong>Мужчины</strong></td>
+			</tr>
+			<tr>
+				<td rowspan="2" style="background:#9de1f4;color:#000;text-align:center;vertical-align:middle;">Категории (кг.)</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">3 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">2 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">1 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">КМС</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">МС</td>
+			</tr>
+			<tr>
+				<td colspan="5"  style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;"	>Сумма двоеборья (кг.)</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">55</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">15</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">20</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">25</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">30</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">40</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">65</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">20</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">32,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">45</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">52,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">60</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">75</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">30</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">40</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">50</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">57,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">65</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">85</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">35</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">45</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">55</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">62,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">70</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">95</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">42,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">52,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">60</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">65</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">72,5</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">105</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">50</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">57,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">65</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">67,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">75</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">105+</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">57,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">62,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">67,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">72,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">77,5</td>
+			</tr>
+		</table></center>
+		<br/>
+			<center><table>
+			<tr>
+				<td colspan="6" style="text-align:center;background:#fff;"><strong>Женщины</strong></td>
+			</tr>
+			<tr>
+				<td rowspan="2" style="background:#9de1f4;color:#000;text-align:center;vertical-align:middle;">Категории (кг.)</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">3 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">2 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">1 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">КМС</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">МС</td>
+			</tr>
+			<tr>
+				<td colspan="5"  style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;"	>Сумма двоеборья (кг.)</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">45</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">10</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">12,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">15</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">17,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">20</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">55</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">12,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">15</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">17,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">20</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">25</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">65</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">15</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">17,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">20</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">22,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">27,5</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">65+</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">17,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">20</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">22,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">27,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">30</td>
+			</tr>
+		</table></center>
+		<h3>Нормативы по классическому отжиманию на брусьях</h3>
+		<center><table>
+			<tr>
+				<td colspan="6" style="text-align:center;background:#fff;"><strong>Мужчины</strong></td>
+			</tr>
+			<tr>
+				<td rowspan="2" style="background:#9de1f4;color:#000;text-align:center;vertical-align:middle;">Категории (кг.)</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">3 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">2 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">1 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">КМС</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">МС</td>
+			</tr>
+			<tr>
+				<td colspan="5"  style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;"	>Сумма двоеборья (кг.)</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">55</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">30</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">35</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">45</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">52,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">62,5</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">65</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">40</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">50</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">60</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">72,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">85</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">75</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">50</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">60</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">70</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">82,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">92,5</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">85</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">60</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">70</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">80</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">87,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">95</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">95</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">65</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">75</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">85</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">95</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">107,5</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">105</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">70</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">82,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">92,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">102,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">110</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">105+</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">75</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">87,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">97,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">107,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">115</td>
+			</tr>
+		</table></center>
+		<br/>
+		<center><table>
+			<tr>
+				<td colspan="6" style="text-align:center;background:#fff;"><strong>Женщины</strong></td>
+			</tr>
+			<tr>
+				<td rowspan="2" style="background:#9de1f4;color:#000;text-align:center;vertical-align:middle;">Категории (кг.)</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">3 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">2 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">1 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">КМС</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">МС</td>
+			</tr>
+			<tr>
+				<td colspan="5"  style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;"	>Сумма двоеборья (кг.)</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">45</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">15</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">17,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">20</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">22,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">27,5</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">55</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">20</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">22,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">25</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">27,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">30</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">65</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">22,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">25</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">27,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">30</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">32,5</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">65+</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">25</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">27,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">30</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">32,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">35</td>
+			</tr>
+		</table></center>
+		<h3>Нормативы по многоповторному стритлифтингу (отдельные упражнения)</h3>
+		<p>Формура расчёта коэффициента атлетизма: К = ВГ * КП / СВ,</p>
+		<p>где К - коэффициент, </p>
+		<p>ВГ - вес гири,</p>
+		<p>КП - количество повторений,</p>
+		<p>СВ - собственный вес.</p>
+		<h3>Подтягивания на турнике</h3>
+		<center><table>
+			<tr>
+				<td rowspan="2" style="background:#9de1f4;color:#000;text-align:center;vertical-align:middle;">Вес гири (кг.)</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">3 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">2 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">1 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">КМС</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">МС</td>
+			</tr>
+			<tr>
+				<td colspan="5"  style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;"	>Коэффициент атлетизма</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">16</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">1,2</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">2,1</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">3</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">4,2</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">5,1</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">24</td>
+				<td rowspan="2" style="background:#fff;color:#000;text-align:center;vertical-align:middle;">1,3</td>
+				<td rowspan="2" style="background:#fff;color:#000;text-align:center;vertical-align:middle;">2,1</td>
+				<td rowspan="2" style="background:#fff;color:#000;text-align:center;vertical-align:middle;">2,9</td>
+				<td rowspan="2" style="background:#fff;color:#000;text-align:center;vertical-align:middle;">4,2</td>
+				<td rowspan="2" style="background:#fff;color:#000;text-align:center;vertical-align:middle;">5,1</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">32</td>
+			</tr>
+		</table></center>
+		<h3>Отжимания на брусьях</h3>
+		<center><table>
+			<tr>
+				<td rowspan="2" style="background:#9de1f4;color:#000;text-align:center;vertical-align:middle;">Вес гири (кг.)</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">3 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">2 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">1 разряд</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">КМС</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">МС</td>
+			</tr>
+			<tr>
+				<td colspan="5"  style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;"	>Коэффициент атлетизма</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">16</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">3,8</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">4,9</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">5,5</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">6,4</td>
+				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">7,4</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">24</td>
+				<td rowspan="3" style="background:#fff;color:#000;text-align:center;vertical-align:middle;">3,4</td>
+				<td rowspan="3" style="background:#fff;color:#000;text-align:center;vertical-align:middle;">5,1</td>
+				<td rowspan="3" style="background:#fff;color:#000;text-align:center;vertical-align:middle;">6,4</td>
+				<td rowspan="3" style="background:#fff;color:#000;text-align:center;vertical-align:middle;">8,9</td>
+				<td rowspan="3" style="background:#fff;color:#000;text-align:center;vertical-align:middle;">11,3</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">32</td>
+			</tr>
+			<tr>
+				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">48</td>
+			</tr>
+		</table></center>
 	</div>
 
 </div>
