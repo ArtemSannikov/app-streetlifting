@@ -18,14 +18,6 @@
 	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
 	<!-- cordova js -->
 	<script src="cordova.js"></script>
-<script type="text/javascript">
-    $(document).on("pageinit", "#home", function (event) {
-        $(document).on('click', '#exit', function (e) {
-                navigator.app.exitApp();
-        }, false);             
-
-    });
-</script>
 </head>
 <body>
 
@@ -68,7 +60,7 @@
 			<li data-role="list-divider">Информация</li>
 
 				<li data-icon="info"><a href="#info" data-transition="none">О приложении</a></li>
-				<li data-icon="power"><a href="#exit" data-transition="none">Выход</a></li>
+				<li data-icon="power"><a onclick="navigator.app.exitApp();" data-icon="action" data-transition="none">Выход</a></li>
 
 
 		</ul>
