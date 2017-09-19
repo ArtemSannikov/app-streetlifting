@@ -18,31 +18,61 @@
 	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
 	<!-- cordova js -->
 	<script src="cordova.js"></script>
+<script type="text/javascript">
+    $(document).on("pageinit", "#home", function (event) {
+        $(document).on('click', '#exit', function (e) {
+                navigator.app.exitApp();
+        }, false);             
+
+    });
+</script>
 </head>
 <body>
 
 <!-- ################### Содержание ################### -->
-<div data-role="page" id="content" data-theme="a">
+<div data-role="page" id="home" data-theme="a">
 
 	<div data-role="main" class="ui-content">
+
 		<center><img src="images/logo_isf.png" width="180"></center>
-		<div data-role="controlgroup" data-type="vertical">
 
-		 	<a href="#calculate-streetlifting" data-role="button" data-icon="gear" data-transition="none" data-iconpos="left" data-transition="none">Коэффициент стритлифтинга</a>
+		<ul data-role="listview" data-inset="true">
 
-		 	<a href="#calculate-athleticism" data-role="button" data-icon="gear" data-transition="none" data-iconpos="left" data-transition="none">Коэффициент атлетизма</a>
+			<li data-role="list-divider">Рассчитать коэффициент</li>
 
-			<a href="#calendar" data-role="button" data-icon="calendar" data-transition="none" data-iconpos="left" data-transition="none">Календарь событий</a>
+				<li data-icon="gear"><a href="#calculate-streetlifting" data-transition="none">Стритлифтинг</a></li>
+				<li data-icon="gear"><a href="#calculate-athleticism" data-transition="none">Атлетизм</a></li>
 
-		 	<a href="#records" data-role="button" data-icon="star" data-transition="none" data-iconpos="left" data-transition="none">Рекорды</a>
-		 	
-		 	<a href="#normativ" data-role="button" data-icon="check" data-transition="none" data-iconpos="left" data-transition="none">Нормативы</a>
+			<li data-role="list-divider">Соревнования</li>
+			
+				<li data-icon="calendar"><a href="#calendar" data-transition="none">Календарь</a></li>
+				<li data-icon="gear"><a href="" data-transition="none">#Положения</a></li>
+				<li data-icon="gear"><a href="" data-transition="none">#Протоколы</a></li>
 
-		 	<a href="#documents" data-role="button" data-icon="bars" data-transition="none" data-iconpos="left" data-transition="none">Документы</a> 	
+			<li data-role="list-divider">Документы</li>
 
-		 	<a href="#info" data-role="button" data-icon="info" data-transition="none" data-iconpos="left" data-transition="none" >О приложении</a>
+				<li data-icon=""><a href="#" data-transition="none">#Правила</a></li>
+				<li data-icon="check"><a href="#normativ" data-transition="none">Нормативы</a></li>
+				<li data-icon="star"><a href="#records" data-transition="none">Рекорды</a></li>
+				<li data-icon=""><a href="#" data-transition="none">Реестр КМС/МС/МСМК</a></li>
+				<li data-icon=""><a href="#" data-transition="none">#Организаторам</a></li>
+				<li data-icon=""><a href="#" data-transition="none">#Судьям</a></li>
+				<li data-icon=""><a href="#" data-transition="none">#Антидопинг</a></li>
 
-		 </div>
+			<li data-role="list-divider">О федерации</li>
+				
+				<li data-icon=""><a href="#" data-transition="none">#Уставные документы</a></li>
+				<li data-icon=""><a href="#" data-transition="none">#Меморандум</a></li>
+				<li data-icon=""><a href="#" data-transition="none">#Филиалы</a></li>
+
+			<li data-role="list-divider">Информация</li>
+
+				<li data-icon="info"><a href="#info" data-transition="none">О приложении</a></li>
+				<li data-icon="power"><a href="#exit" data-transition="none">Выход</a></li>
+
+
+		</ul>
+
 	</div>
 
 </div>
@@ -51,32 +81,32 @@
 <div data-role="page" id="calculate-streetlifting" data-theme="a">
 
 	<div data-role="header" data-add-back-btn="true" data-back-btn-text="Назад" data-back-btn-theme="a">
-		<h1>Коэффициент стритлифтинга</h1>
+		<h1>Стритлифтинг</h1>
 	</div>
 
 	<div data-role="main" class="ui-content">
 
 		<form action="" data-ajax="false">
 
-			<p style="width:100%;text-align:center;font-weight:bold;color:green;"><span id="number"></span></p>
+			<p style="width:100%;text-align:center;font-weight:bold;color:green;"><span id="result_streetlifting"></span></p>
 
 			<input type="text" name="param1" id="param1" placeholder="Вес атлета">
 			<input type="text" name="param2" id="param2" placeholder="Вес отягощения в первом упражнении">
 			<input type="text" name="param3" id="param3" placeholder="Вес отягощения во втором упражнении">
-			<input type="button" value="Рассчитать коэффициент" onclick="displayResult()">
+			<input type="button" value="Рассчитать коэффициент" onclick="DisplayResultStreetlifting()">
 			<!--<input type="reset" value="Сбросить">-->
 		</form>
 
 		<script type="text/javascript">
 	            
-			function displayResult() {
+			function DisplayResultStreetlifting() {
 				var param1 = document.getElementById('param1').value;
 				var param2 = document.getElementById('param2').value;
 				var param3 = document.getElementById('param3').value;
-				document.getElementById('number').innerHTML = calculateCoefficient(param1, param2, param3);
+				document.getElementById('result_streetlifting').innerHTML = calculateCoefficientStreetlifting(param1, param2, param3);
 			}
 
-			function calculateCoefficient(param1, param2, param3) {
+			function calculateCoefficientStreetlifting(param1, param2, param3) {
 				$result = (+param1 + +param2 + +param3) / +param1;
 				return $result.toFixed(2);
 			}
@@ -98,7 +128,7 @@
 <div data-role="page" id="calculate-athleticism" data-theme="a">
 
 	<div data-role="header" data-add-back-btn="true" data-back-btn-text="Назад" data-back-btn-theme="a">
-		<h1>Коэффициент атлетизма</h1>
+		<h1>Атлетизм</h1>
 	</div>
 
 	<div data-role="main" class="ui-content">
@@ -110,20 +140,20 @@
 			<input type="text" name="param_athleticism_1" id="param_athleticism_1" placeholder="Вес гири">
 			<input type="text" name="param_athleticism_2" id="param_athleticism_2" placeholder="Количество повторений">
 			<input type="text" name="param_athleticism_3" id="param_athleticism_3" placeholder="Собственный вес">
-			<input type="button" value="Рассчитать коэффициент" onclick="displayResult()">
+			<input type="button" value="Рассчитать коэффициент" onclick="DisplayResultAthleticism()">
 			<!--<input type="reset" value="Сбросить">-->
 		</form>
 
 		<script type="text/javascript">
 	            
-			function displayResult() {
+			function DisplayResultAthleticism() {
 				var param_athleticism_1 = document.getElementById('param_athleticism_1').value;
 				var param_athleticism_2 = document.getElementById('param_athleticism_2').value;
 				var param_athleticism_3 = document.getElementById('param_athleticism_3').value;
-				document.getElementById('result_athleticism').innerHTML = calculateCoefficient(param_athleticism_1, param_athleticism_2, param_athleticism_3);
+				document.getElementById('result_athleticism').innerHTML = calculateCoefficientAthleticism(param_athleticism_1, param_athleticism_2, param_athleticism_3);
 			}
 
-			function calculateCoefficient(param_athleticism_1, param_athleticism_2, param_athleticism_3) {
+			function calculateCoefficientAthleticism(param_athleticism_1, param_athleticism_2, param_athleticism_3) {
 				$result = (+param_athleticism_1 * +param_athleticism_2) / +param_athleticism_3;
 				return $result.toFixed(2);
 			}
@@ -548,7 +578,7 @@
 
 	<div data-role="main" class="ui-content">
 		<h3>Нормативы по классическому стритлифтингу (двоеборье)</h3>
-		<center><table>
+		<center><table width="100%">
 			<tr>
 				<td colspan="6" style="text-align:center;background:#fff;"><strong>Мужчины</strong></td>
 			</tr>
@@ -621,7 +651,7 @@
 			</tr>
 		</table></center>
 		<br/>
-		<center><table>
+		<center><table width="100%">
 			<tr>
 				<td colspan="6" style="text-align:center;background:#fff;"><strong>Женщины</strong></td>
 			</tr>
@@ -670,7 +700,7 @@
 			</tr>
 		</table></center>
 		<h3>Нормативы по классическому подтягиванию</h3>
-		<center><table>
+		<center><table width="100%">
 			<tr>
 				<td colspan="6" style="text-align:center;background:#fff;"><strong>Мужчины</strong></td>
 			</tr>
@@ -743,7 +773,7 @@
 			</tr>
 		</table></center>
 		<br/>
-			<center><table>
+			<center><table width="100%">
 			<tr>
 				<td colspan="6" style="text-align:center;background:#fff;"><strong>Женщины</strong></td>
 			</tr>
@@ -792,7 +822,7 @@
 			</tr>
 		</table></center>
 		<h3>Нормативы по классическому отжиманию на брусьях</h3>
-		<center><table>
+		<center><table width="100%">
 			<tr>
 				<td colspan="6" style="text-align:center;background:#fff;"><strong>Мужчины</strong></td>
 			</tr>
@@ -865,7 +895,7 @@
 			</tr>
 		</table></center>
 		<br/>
-		<center><table>
+		<center><table width="100%">
 			<tr>
 				<td colspan="6" style="text-align:center;background:#fff;"><strong>Женщины</strong></td>
 			</tr>
@@ -920,7 +950,7 @@
 		<p>КП - количество повторений,</p>
 		<p>СВ - собственный вес.</p>
 		<h3>Подтягивания на турнике</h3>
-		<center><table>
+		<center><table width="100%">
 			<tr>
 				<td rowspan="2" style="background:#9de1f4;color:#000;text-align:center;vertical-align:middle;">Вес гири (кг.)</td>
 				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">3 разряд</td>
@@ -953,7 +983,7 @@
 			</tr>
 		</table></center>
 		<h3>Отжимания на брусьях</h3>
-		<center><table>
+		<center><table width="100%">
 			<tr>
 				<td rowspan="2" style="background:#9de1f4;color:#000;text-align:center;vertical-align:middle;">Вес гири (кг.)</td>
 				<td style="background:#fff;color:#000;text-align:center;vertical-align:middle;">3 разряд</td>
@@ -988,19 +1018,6 @@
 				<td style="background:#cbe1e5;color:#000;text-align:center;vertical-align:middle;">48</td>
 			</tr>
 		</table></center>
-	</div>
-
-</div>
-
-<!-- ################### Документы ################### -->
-<div data-role="page" id="documents" data-theme="a">
-
-	<div data-role="header"  data-add-back-btn="true" data-back-btn-text="Назад" data-back-btn-theme="a">
-		<h1>Документы</h1>
-	</div>
-
-	<div data-role="main" class="ui-content">
-
 	</div>
 
 </div>
