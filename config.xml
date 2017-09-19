@@ -9,7 +9,7 @@
 		    <name>Стритлифтинг</name>
 
 		    <!-- Description -->
-		    <description>Стритлифтинг — силовое двоеборье (подтягивание на перекладине и отжимание на брусьях) с максимальным дополнительным отягощением. Расчет коэффициента стритлифтинг (Streetlifting).</description>
+		    <description>Стритлифтинг (Streetlifting) — силовое двоеборье, включающее в себя два движения: подтягивание на перекладине и отжимание на брусьях с дополнительным отягощением.</description>
 
 		    <!-- Author -->
 		    <author href="https://artemsannikov.ru" email="info@artemsannikov.ru">
@@ -24,13 +24,6 @@
 				<icon density="xhdpi" src="res/icons/android/xhdpi.png"/>
 				<icon density="xxhdpi" src="res/icons/android/xxhdpi.png"/>
 				<icon density="xxxhdpi" src="res/icons/android/xxxhdpi.png"/>
-				<!--  Portrait  -->
-				<splash density="port-ldpi" src="res/screens/android/splash-port-ldpi.png"/>
-				<splash density="port-mdpi" src="res/screens/android/splash-port-mdpi.png"/>
-				<splash density="port-hdpi" src="res/screens/android/splash-port-hdpi.png"/>
-				<splash density="port-xhdpi" src="res/screens/android/splash-port-xhdpi.png"/>
-				<splash density="port-xxhdpi" src="res/screens/android/splash-port-xxhdpi.png"/>
-				<splash density="port-xxxhdpi" src="res/screens/android/splash-port-xxxhdpi.png"/>
 			</platform>
 
 	</widget>
