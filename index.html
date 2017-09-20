@@ -6,7 +6,15 @@
 	<title>Стритлифтинг</title>
 	<!-- Include meta tag to ensure proper rendering and touch zooming-->
 	<meta name="view-port" content="width=device-width, initial-scale=1">
+	<!-- Fullscreen app iOS -->
 	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!-- Fullscreen app Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<script type="text/javascript">
+		if(navigator.userAgent.match(/Android/i)){
+			window.scrollTo(0,1);
+		}
+	</script>
 	<!-- Include jQuery Mobile stylesheets -->
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
 	<link rel="stylesheet" href="css/themes/my-theme.css" />
@@ -78,10 +86,9 @@
 			<p style="width:100%;text-align:center;font-weight:bold;color:#fff;"><span id="result_streetlifting"></span></p>
 
 			<input type="number" pattern="[0-9]*" name="param1" id="param1" placeholder="Вес атлета">
-			<input type="text" name="param2" id="param2" placeholder="Вес отягощения в первом упражнении">
-			<input type="text" name="param3" id="param3" placeholder="Вес отягощения во втором упражнении">
+			<input type="number" pattern="[0-9]*" name="param2" id="param2" placeholder="Вес отягощения в первом упражнении">
+			<input type="number" pattern="[0-9]*" name="param3" id="param3" placeholder="Вес отягощения во втором упражнении">
 			<input type="button" value="Рассчитать коэффициент" onclick="DisplayResultStreetlifting()">
-			<!--<input type="reset" value="Сбросить">-->
 		</form>
 
 		<script type="text/javascript">
@@ -124,9 +131,9 @@
 
 			<p style="width:100%;text-align:center;font-weight:bold;color:#fff;"><span id="result_athleticism"></span></p>
 
-			<input type="text" name="param_athleticism_1" id="param_athleticism_1" placeholder="Вес гири">
-			<input type="text" name="param_athleticism_2" id="param_athleticism_2" placeholder="Количество повторений">
-			<input type="text" name="param_athleticism_3" id="param_athleticism_3" placeholder="Вес атлета">
+			<input type="number" pattern="[0-9]*" name="param_athleticism_1" id="param_athleticism_1" placeholder="Вес гири">
+			<input type="number" pattern="[0-9]*" name="param_athleticism_2" id="param_athleticism_2" placeholder="Количество повторений">
+			<input type="number" pattern="[0-9]*" name="param_athleticism_3" id="param_athleticism_3" placeholder="Вес атлета">
 			<input type="button" value="Рассчитать коэффициент" onclick="DisplayResultAthleticism()">
 			<!--<input type="reset" value="Сбросить">-->
 		</form>
