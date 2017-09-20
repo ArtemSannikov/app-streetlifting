@@ -10,11 +10,6 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<!-- Fullscreen app Android -->
 	<meta name="mobile-web-app-capable" content="yes">
-	<script type="text/javascript">
-		if(navigator.userAgent.match(/Android/i)){
-			window.scrollTo(0,1);
-		}
-	</script>
 	<!-- Include jQuery Mobile stylesheets -->
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
 	<link rel="stylesheet" href="css/themes/my-theme.css" />
@@ -176,68 +171,64 @@
 
 		<p>Заполните форму ниже, для того, чтобы оставить онлайн заявку для выступления на соревнованиях.</p>
 
-		<form action="" method="" name="">
+		<form action="action/requisition.php" method="POST" data-ajax="false">
 
-			<label for="">Фамилия:</label>
-			<input type="text" name="" placeholder="Фамилия" id="">
+			<label for="last-name">Фамилия:</label>
+			<input type="text" name="last_name" placeholder="Фамилия" id="last-name" required>
 
-			<label for="">Имя:</label>
-			<input type="text" name="" placeholder="Имя" id="">
+			<label for="first-name">Имя:</label>
+			<input type="text" name="first_name" placeholder="Имя" id="first-name" required>
 
-			<label for="">Отчество:</label>
-			<input type="text" name="" placeholder="Отчество" id="">
+			<label for="middle-name">Отчество:</label>
+			<input type="text" name="middle_name" placeholder="Отчество" id="middle-name" required>
 
-			<label for="">Дата рождения:</label>
-			<input type="date" name="bday" id="bday">
+			<label for="happy-birthday">Дата рождения:</label>
+			<input type="date" name="happy_birthday" id="happy-birthday">
 
-			<label for="day">Пол:</label>
-			<select name="day" id="" data-native-menu="false">
-				<option value="man">Мужской</option>
-				<option value="women">Женский</option>
+			<label for="gender">Пол:</label>
+			<select name="gender" id="gender" data-native-menu="false">
+				<option value="Мужской">Мужской</option>
+				<option value="Женский">Женский</option>
 			</select>
 
-			<label for="">Страна:</label>
-			<input type="text" name="" placeholder="Страна" id="">
+			<label for="geolocation">Откуда вы?</label>
+			<textarea name="geolocation" id="geolocation" placeholder="Страна/Область/Город" required></textarea>
 
-			<label for="">Область (регион):</label>
-			<input type="text" name="" placeholder="Область (регион)" id="">
+			<label for="phone-number">Телефон:</label>
+			<input type="tel" name="phone_number" placeholder="Телефон" id="phone-number" required>
 
-			<label for="">Город:</label>
-			<input type="text" name="" placeholder="Город" id="">
+			<label for="email-address">Электронная почта:</label>
+			<input type="email" name="email_address" placeholder="Электронная почта" id="email-address" required>
 
-			<label for="">Телефон:</label>
-			<input type="text" name="" placeholder="Телефон" id="">
-
-			<label for="">Электронная почта:</label>
-			<input type="email" name="" placeholder="Электронная почта" id="">
-
-			<label for="day">Звание:</label>
-			<select name="day" id="" data-native-menu="false">
-				<option value="">У меня нет звания</option>
-				<option value="">III взрослый</option>
-				<option value="">II взрослый</option>
-				<option value="">I взрослый</option>
-				<option value="">КМС</option>
-				<option value="">МС</option>
-				<option value="">МСМК</option>
+			<label for="status">Звание:</label>
+			<select name="status" id="status[]" data-native-menu="false">
+				<option value="Нет">У меня нет звания</option>
+				<option value="III взрослый">III взрослый</option>
+				<option value="II взрослый">II взрослый</option>
+				<option value="I взрослый">I взрослый</option>
+				<option value="КМС">КМС</option>
+				<option value="МС">МС</option>
+				<option value="МСМК">МСМК</option>
 			</select>
 
-			<label for="">Команда:</label>
-			<input type="text" name="" placeholder="Лично" id="">
+			<label for="command">Команда:</label>
+			<input type="text" name="command" placeholder="Команда или личное первенство?" id="command" required>
 
-			<label for="">Спортивные достижения:</label>
-			<input type="text" name="" placeholder="Если их нет, то так и напишите." id="">
+			<label for="sport-achievement">Спортивные достижения:</label>
+			<input type="text" name="sport_achievement" placeholder="Если их нет, то так и напишите." id="sport-achievement" required>
 
-			<label for="">Тренер:</label>
-			<input type="text" name="" placeholder="Самостоятельно" id="">
+			<label for="coach">Тренер:</label>
+			<input type="text" name="coach" placeholder="Самостоятельно" id="coach" required>
 
-			<label for="day">Вид спорта:</label>
-			<select name="day" id="" data-native-menu="false">
-				<option value="streetlifting">Стритлифтинг</option>
-				<option value="armlifting">Армлифтинг</option>
-				<option value="mnogopovtor-zhim">Многоповторный жим</option>
+			<label for="sport">Вид спорта:</label>
+			<select name="sport" id="sport" data-native-menu="false">
+				<option value="Стритлифтинг">Стритлифтинг</option>
+				<option value="Армлифтинг">Армлифтинг</option>
+				<option value="Многоповторный жим">Многоповторный жим</option>
 			</select>
+
 			<br/>
+
 			<input type="submit" value="Отправить">
 
 		</form>
