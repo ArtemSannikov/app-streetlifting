@@ -54,24 +54,6 @@
 		$mail = htmlspecialchars(substr($_POST['email_address'],0,40)); #Электронная почта
 		$pattern_mail ="/^[a-z0-9_-]+@[a-z0-9]+\.[a-z]{2,6}$/i"; #шаблон для проверки почты
 
-
-		/*echo "<p>".$first_name." ".$middle_name.", проверьте ваши данные перед отправкой.</p>";
-		echo "<p>Фамилия: ".$last_name."</p>";
-		echo "<p>Имя: ".$first_name."</p>";
-		echo "<p>Отчество: ".$middle_name."</p>";
-		echo "<p>Дата рождения: ".$happy_birthday."</p>";
-		echo "<p>Пол: ".$gender."</p>";
-		echo "<p>Страна: ".$country."</p>";
-		echo "<p>Область (регион): ".$region."</p>";
-		echo "<p>Город: ".$city."</p>";
-		echo "<p>Номер телефона: ".$phone_number."</p>";
-		echo "<p>Почта: ".$mail."</p>";
-		echo "<p>Звание: ".$status."</p>";
-		echo "<p>Команда: ".$command."</p>";
-		echo "<p>Спортивные достижения: ".$sport_achievement."</p>";
-		echo "<p>Тренер: ".$coach."</p>";
-		echo "<p>Вид спорта: ".$sport."</p>";*/
-
 		#Проверяем заполнены ли поля формы
 
 		if(empty($last_name)){exit('Поле "Фамилия" не заполнено!');}
