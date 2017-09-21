@@ -173,35 +173,41 @@
 
 		<form action="action/requisition.php" method="POST" data-ajax="false">
 
-			<label for="last-name">Фамилия:</label>
+			<label for="last-name">Фамилия:*</label>
 			<input type="text" name="last_name" placeholder="Фамилия" id="last-name" required>
 
-			<label for="first-name">Имя:</label>
+			<label for="first-name">Имя:*</label>
 			<input type="text" name="first_name" placeholder="Имя" id="first-name" required>
 
-			<label for="middle-name">Отчество:</label>
+			<label for="middle-name">Отчество:*</label>
 			<input type="text" name="middle_name" placeholder="Отчество" id="middle-name" required>
 
-			<label for="happy-birthday">Дата рождения:</label>
+			<label for="happy-birthday">Дата рождения:*</label>
 			<input type="date" name="happy_birthday" id="happy-birthday">
 
-			<label for="gender">Пол:</label>
+			<label for="gender">Пол:*</label>
 			<select name="gender" id="gender" data-native-menu="false">
 				<option value="Мужской">Мужской</option>
 				<option value="Женский">Женский</option>
 			</select>
 
-			<label for="geolocation">Откуда вы?</label>
-			<textarea name="geolocation" id="geolocation" placeholder="Страна/Область/Город" required></textarea>
+			<label for="country">Страна:*</label>
+			<input type="text" name="country" placeholder="Страна" id="country" required>
 
-			<label for="phone-number">Телефон:</label>
+			<label for="region">Область (регион):*</label>
+			<input type="text" name="region" placeholder="Область (регион)" id="region" required>
+
+			<label for="city">Город:*</label>
+			<input type="text" name="city" placeholder="Город" id="city" required>
+
+			<label for="phone-number">Телефон:*</label>
 			<input type="tel" name="phone_number" placeholder="Телефон" id="phone-number" required>
 
-			<label for="email-address">Электронная почта:</label>
+			<label for="email-address">Электронная почта:*</label>
 			<input type="email" name="email_address" placeholder="Электронная почта" id="email-address" required>
 
-			<label for="status">Звание:</label>
-			<select name="status" id="status[]" data-native-menu="false">
+			<label for="status">Звание:*</label>
+			<select name="status" id="status" data-native-menu="false">
 				<option value="Нет">У меня нет звания</option>
 				<option value="III взрослый">III взрослый</option>
 				<option value="II взрослый">II взрослый</option>
@@ -211,16 +217,16 @@
 				<option value="МСМК">МСМК</option>
 			</select>
 
-			<label for="command">Команда:</label>
-			<input type="text" name="command" placeholder="Команда или личное первенство?" id="command" required>
+			<label for="command">Команда:*</label>
+			<input type="text" name="command" placeholder="Лично" id="command" required>
 
-			<label for="sport-achievement">Спортивные достижения:</label>
+			<label for="sport-achievement">Спортивные достижения:*</label>
 			<input type="text" name="sport_achievement" placeholder="Если их нет, то так и напишите." id="sport-achievement" required>
 
-			<label for="coach">Тренер:</label>
+			<label for="coach">Тренер:*</label>
 			<input type="text" name="coach" placeholder="Самостоятельно" id="coach" required>
 
-			<label for="sport">Вид спорта:</label>
+			<label for="sport">Вид спорта:*</label>
 			<select name="sport" id="sport" data-native-menu="false">
 				<option value="Стритлифтинг">Стритлифтинг</option>
 				<option value="Армлифтинг">Армлифтинг</option>
@@ -229,7 +235,7 @@
 
 			<br/>
 
-			<input type="submit" value="Отправить">
+			<input type="submit" value="Отправить" data-theme="a">
 
 		</form>
 
