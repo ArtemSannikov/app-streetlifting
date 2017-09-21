@@ -140,11 +140,10 @@
 						</tr>
 					</table'; #Формирование сообщения
 
-		$headers = "From: app@streetlifting.ru\r\n"; //от кого
+		$headers = "From: app@streetlifting.ru\r\n"; #от кого
 		$headers .= "Content-type: text/html; charset=utf-8\r\n";#кодировка
-		$result = mail($to, $subject, $message, $headers); #Результат
 
-		if($result){
+		if(mail($to, $subject, $message, $headers)){
 			echo '<p>'.$first_name.' '.$middle_name.', ваша заявка была отправлена.</p>'; 
 		}else{
 			echo '<p>Произошла ошибка. Попробуйте еще раз!</p>';
