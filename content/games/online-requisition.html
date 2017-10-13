@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Charset -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Онлайн заявка</title>
+	<!-- Include meta tag to ensure proper rendering and touch zooming-->
+	<meta name="view-port" content="width=device-width, initial-scale=1">
+	<!-- Include jQuery Mobile stylesheets -->
+	<link rel="stylesheet" href="../../css/jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" href="../../css/themes/my-theme.css" />
+	<link rel="stylesheet" href="../../css/themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="../../css/my-style.css" />
+	<!-- Include the jQuery Mobile library -->
+	<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+	<!-- Include the jQuery Mobile library -->
+	<script type="text/javascript" src="../../js/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+	<!-- cordova js -->
+	<script src="../../cordova.js"></script>
+</head>
+<body>
+
+<div data-role="page" id="online-requestion" data-theme="a">
+
+	<div data-role="header" data-position="fixed">
+		<a data-role="button" data-rel="back" data-icon="carat-l" data-iconpos="notext" data-theme="a">Кнопка назад</a>
+		<h1>Онлайн заявка</h1>
+		<a href="../../index.html" data-role="button" data-icon="home" data-iconpos="notext" data-transition="none" data-theme="a">На главную</a>
+	</div>
+
+	<div data-role="main" class="ui-content">
+		<p>Заполните форму ниже, для того, чтобы оставить онлайн заявку для выступления на соревнованиях.</p>
+
+		<form action="action/requisition.php" method="POST" data-ajax="false">
+
+			<label for="last-name">Фамилия:*</label>
+			<input type="text" name="last_name" placeholder="Фамилия" id="last-name" required>
+
+			<label for="first-name">Имя:*</label>
+			<input type="text" name="first_name" placeholder="Имя" id="first-name" required>
+
+			<label for="middle-name">Отчество:*</label>
+			<input type="text" name="middle_name" placeholder="Отчество" id="middle-name" required>
+
+			<label for="happy-birthday">Дата рождения:*</label>
+			<input type="date" name="happy_birthday" id="happy-birthday">
+
+			<label for="gender">Пол:*</label>
+			<select name="gender" id="gender" data-native-menu="false">
+				<option value="Мужской">Мужской</option>
+				<option value="Женский">Женский</option>
+			</select>
+
+			<label for="country">Страна:*</label>
+			<input type="text" name="country" placeholder="Страна" id="country" required>
+
+			<label for="region">Область (регион):*</label>
+			<input type="text" name="region" placeholder="Область (регион)" id="region" required>
+
+			<label for="city">Город:*</label>
+			<input type="text" name="city" placeholder="Город" id="city" required>
+
+			<label for="phone-number">Телефон:*</label>
+			<input type="tel" name="phone_number" placeholder="Телефон" id="phone-number" required>
+
+			<label for="email-address">Электронная почта:*</label>
+			<input type="email" name="email_address" placeholder="Электронная почта" id="email-address" required>
+
+			<label for="status">Звание:*</label>
+			<select name="status" id="status" data-native-menu="false">
+				<option value="Нет">У меня нет звания</option>
+				<option value="III взрослый">III взрослый</option>
+				<option value="II взрослый">II взрослый</option>
+				<option value="I взрослый">I взрослый</option>
+				<option value="КМС">КМС</option>
+				<option value="МС">МС</option>
+				<option value="МСМК">МСМК</option>
+			</select>
+
+			<label for="command">Команда:*</label>
+			<input type="text" name="command" placeholder="Лично" id="command" required>
+
+			<label for="sport-achievement">Спортивные достижения:*</label>
+			<input type="text" name="sport_achievement" placeholder="Если их нет, то так и напишите." id="sport-achievement" required>
+
+			<label for="coach">Тренер:*</label>
+			<input type="text" name="coach" placeholder="Самостоятельно" id="coach" required>
+
+			<label for="sport">Вид спорта:*</label>
+			<select name="sport" id="sport" data-native-menu="false">
+				<option value="Стритлифтинг">Стритлифтинг</option>
+				<option value="Армлифтинг">Армлифтинг</option>
+				<option value="Многоповторный жим">Многоповторный жим</option>
+			</select>
+
+			<br/>
+
+			<input type="submit" value="Отправить" name="submit_requisition" data-theme="a">
+
+		</form>
+	</div>
+
+</div>
+
+</body>
+</html>

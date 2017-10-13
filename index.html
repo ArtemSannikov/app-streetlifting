@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Charset -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Стритлифтинг</title>
+	<!-- Include meta tag to ensure proper rendering and touch zooming-->
+	<meta name="view-port" content="width=device-width, initial-scale=1">
+	<!-- Fullscreen app iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!-- Fullscreen app Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<!-- Include jQuery Mobile stylesheets -->
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" href="css/themes/my-theme.css" />
+	<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="css/my-style.css" />
+	<!-- Include the jQuery Mobile library -->
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<!-- Include the jQuery Mobile library -->
+	<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+	<!-- cordova js -->
+	<script src="cordova.js"></script>
+</head>
+<body>
+
+<!-- ################### Содержание ################### -->
+<div data-role="page" id="home" data-theme="a">
+
+	<div data-role="header">
+		<a href="#sidebar" data-role="button" data-icon="bars" data-iconpos="notext" data-shadow="false" data-transition="none" data-ajax="true" data-iconpos="right">Меню</a>
+		<h1>Главное меню</h1>
+		<a href="#" onclick="navigator.app.exitApp();" data-role="button" data-icon="power" data-iconpos="notext" data-shadow="false" data-transition="none">Выход</a>
+	</div>
+
+	<div data-role="main" class="ui-content">
+
+		<!-- Выезжающая панель слева -->
+		<div data-role="panel" data-display="overlay" data-position="left" id="sidebar">
+			<ul data-role="listview">
+				<li data-icon="false"><a href="content/main/about.html" data-transition="none">О приложении</a></li>
+				<li data-icon="false"><a href="content/main/contact.html" data-transition="none">Контакты</a></li>
+				<li data-icon="false"><a href="#PopupReviewApp" data-rel="popup" data-position-to="window" data-transition="none">Оставить отзыв</a></li>
+				<li data-icon="false"><a href="#PopupPageDeveloper" data-rel="popup" data-position-to="window" data-transition="none">Другие приложения</a></li>
+				<li data-icon="delete" class=""><a data-rel="close">Закрыть панель</a></li>
+			</ul>	
+		</div>
+
+		<!-- Всплывающее окно: Оставить отзыв -->
+		<div data-role="popup" id="PopupReviewApp" data-overlay-theme="a" data-theme="a" data-dismissible="false">
+			<div data-role="header" data-theme="a">
+				<h1>Редирект</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<h3 class="ui-title">Переход на Play Market</h3>
+				<p>Сейчас вы будете перенаправлены на страницу приложения в Play Market, где сможете оставить отзыв о приложении.</p>
+				<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a" data-rel="back">Отмена</a>
+				<a href="https://play.google.com/store/apps/details?id=com.streetlifting" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a" rel="external" data-transition="none">Перейти</a>
+			</div>
+		</div>
+
+		<!-- Всплывающее окно: Другие приложения -->
+		<div data-role="popup" id="PopupPageDeveloper" data-overlay-theme="a" data-theme="a" data-dismissible="false">
+			<div data-role="header" data-theme="a">
+				<h1>Редирект</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<h3 class="ui-title">Переход на Play Market</h3>
+				<p>Сейчас вы будете перенаправлены на страницу разработчика в Play Market, где сможете найти другие приложения автора.</p>
+				<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a" data-rel="back">Отмена</a>
+				<a href="https://play.google.com/store/apps/developer?id=Артём+Санников" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a" rel="external" data-transition="none">Перейти</a>
+			</div>
+		</div>
+
+		<!-- Контент -->
+		<center><img src="images/logo_sf.jpg" width="220"></center>
+
+		<ul data-role="listview" data-inset="true">
+			<li data-icon="false">
+				<a href="content/main/coefficient.html" data-transition="none" data-ajax="true">
+					<img src="images/icon/main/coefficient.png">
+					<h2>Рассчитать коэффициент</h2>
+					<p>Classic и Multilift.</p>
+				</a>
+			</li>
+			<li data-icon="false">
+				<a href="content/main/games.html" data-transition="none" data-ajax="true">
+					<img src="images/icon/main/games.png">
+					<h2>Соревнования</h2>
+					<p>Календарь, онлай заявка и др.</p>
+				</a>
+			</li>
+			<li data-icon="false">
+				<a href="content/main/documents.html" data-transition="none" data-ajax="true">
+					<img src="images/icon/main/documents.png">
+					<h2>Документы</h2>
+					<p>Нормативы, рекорды, антидопинг и др.</p>
+				</a>
+			</li>
+			<li data-icon="false">
+				<a href="content/main/isf-russia.html" data-transition="none" data-ajax="true">
+					<img src="images/icon/main/isf-russia.png">
+					<h2>ISF Россия</h2>
+					<p>Руководство, отделения и др.</p>
+				</a>
+			</li>
+		</ul>
+
+	</div>
+
+</div>
+
+</body>
+</html>

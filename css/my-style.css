@@ -1,0 +1,13 @@
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	border:1px solid #999;
+}
+	table td {
+		border:1px solid #999;  
+	}
+
+.ui-icon-cup:after{background-image:url('themes/images/icons-png/cup-white.png');}
+.ui-icon-calculator:after{background-image:url('themes/images/icons-png/calculator-white.png');}
+.ui-icon-injection:after{background-image:url('themes/images/icons-png/injection-white.png');}

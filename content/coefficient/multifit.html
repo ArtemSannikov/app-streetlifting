@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Charset -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Streetlifting Multilift</title>
+	<!-- Include meta tag to ensure proper rendering and touch zooming-->
+	<meta name="view-port" content="width=device-width, initial-scale=1">
+	<!-- Include jQuery Mobile stylesheets -->
+	<link rel="stylesheet" href="../../css/jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" href="../../css/themes/my-theme.css" />
+	<link rel="stylesheet" href="../../css/themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="../../css/my-style.css" />
+	<!-- Include the jQuery Mobile library -->
+	<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+	<!-- Include the jQuery Mobile library -->
+	<script type="text/javascript" src="../../js/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+	<!-- cordova js -->
+	<script src="../../cordova.js"></script>
+</head>
+<body>
+
+<div data-role="page" id="" data-theme="a">
+
+	<div data-role="header" data-position="fixed">
+		<a data-role="button" data-rel="back" data-icon="carat-l" data-iconpos="notext" data-theme="a">Кнопка назад</a>
+		<h1>Multilift</h1>
+		<a href="../../index.html" data-role="button" data-icon="home" data-iconpos="notext" data-transition="none" data-theme="a">На главную</a>
+	</div>
+
+	<div data-role="main" class="ui-content">
+		<form action="" data-ajax="false">
+
+			<p style="width:100%;text-align:center;font-weight:bold;color:#fff;"><span id="result_athleticism"></span></p>
+
+			<input type="number" pattern="[0-9]*" name="param_athleticism_1" id="param_athleticism_1" placeholder="Вес гири">
+			<input type="number" pattern="[0-9]*" name="param_athleticism_2" id="param_athleticism_2" placeholder="Количество повторений">
+			<input type="number" pattern="[0-9]*" name="param_athleticism_3" id="param_athleticism_3" placeholder="Вес атлета">
+			<input type="button" value="Рассчитать коэффициент" onclick="DisplayResultAthleticism()">
+			<!--<input type="reset" value="Сбросить">-->
+		</form>
+
+		<script type="text/javascript">
+	            
+			function DisplayResultAthleticism() {
+				var param_athleticism_1 = document.getElementById('param_athleticism_1').value;
+				var param_athleticism_2 = document.getElementById('param_athleticism_2').value;
+				var param_athleticism_3 = document.getElementById('param_athleticism_3').value;
+				document.getElementById('result_athleticism').innerHTML = calculateCoefficientAthleticism(param_athleticism_1, param_athleticism_2, param_athleticism_3);
+			}
+
+			function calculateCoefficientAthleticism(param_athleticism_1, param_athleticism_2, param_athleticism_3) {
+				$result = (+param_athleticism_1 * +param_athleticism_2) / +param_athleticism_3;
+				return $result.toFixed(2);
+			}
+	            
+		</script>
+
+		<!--<h3>Краткая информация</h3>
+		<p>Формура расчёта коэффициента атлетизма: К = ВГ * КП / СВ,</p>
+		<p>ВГ - вес гири,</p>
+		<p>КП - количество повторений,</p>
+		<p>СВ - собственный вес.</p>-->
+	</div>
+
+</div>
+
+</body>
+</html>
